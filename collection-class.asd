@@ -1,4 +1,4 @@
-;;;; collection-classes.asd
+;;;; collection-class.asd
 
 (asdf:defsystem #:collection-class
   :description "Defines a macro for declaring a class that is a collection of another class"
