@@ -35,10 +35,10 @@
 
 ; TODO: actually use item-class...
 ; TODO: finish initform handling.  Have to figure out how to make initform work with push-item
-(defmacro define-collection ((name item-class &key (initform '(list))) (&rest supers) &body ((&rest slots) &rest other-stuff))
+(defmacro define-collection ((name item-class &key (initarg :items) (initform '(list))) (&rest supers) &body ((&rest slots) &rest other-stuff))
   (with-gensyms (item-slot-sym)
     `(progn (defclass ,name (,@supers collection)
-              ((,item-slot-sym :initform ,initform :accessor items)
+              ((,item-slot-sym :initarg ,initarg :initform ,initform :accessor items) ;
                ,@slots)
               ,@other-stuff)
             (defmethod duplicate-collection ((collection ,name))
